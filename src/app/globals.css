@@ -10,7 +10,7 @@
 
   --font-sans: var(--font-sans), 'Poppins', ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-serif), 'Playfair Display', serif;
-  --font-display: var(--font-display), 'DM Serif Display', serif;
+  --font-display: var(--font-display), 'Melodrama', serif;
 }
 
 :root {
@@ -32,16 +32,20 @@ body {
   font-style: italic;
 }
 
-/* Titles font - DM Serif Display */
+/* Melodrama - Only for BIG TITLES (H1 & H2) */
 h1,
-h2,
+h2 {
+  font-family: var(--font-display) !important;
+  font-weight: 700;
+  /* Melodrama Bold looks great for headers */
+}
+
+/* Standard titles - Poppins */
 h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-display) !important;
-  font-weight: 400;
-  /* DM Serif Display usually only has one weight or looks best at 400 */
+  font-family: var(--font-sans) !important;
 }
 
 /* Force Sans for standard body text and interactive elements */
@@ -52,19 +56,21 @@ textarea {
   font-family: var(--font-sans) !important;
 }
 
-/* Base font-weight helpers to avoid Poppins override on titles */
+/* Default font-weight helpers to Poppins for non-H1/H2 elements */
 .font-bold,
 .font-black,
 .font-semibold {
-  font-family: inherit;
-  /* Allow parent (like h2) to define font-family */
+  font-family: var(--font-sans) !important;
 }
 
-/* If not inside a heading, default these to UI Sans */
-body :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6).font-bold,
-body :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6).font-black,
-body :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6).font-semibold {
-  font-family: var(--font-sans) !important;
+/* Allow H1 and H2 to keep their font-display even with weight classes */
+h1.font-bold,
+h1.font-black,
+h1.font-semibold,
+h2.font-bold,
+h2.font-black,
+h2.font-semibold {
+  font-family: var(--font-display) !important;
 }
 
 .grid-pattern {
