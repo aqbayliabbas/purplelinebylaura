@@ -1,26 +1,105 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-dark: #120d1e;
+  --color-brand-purple: #3a246f;
+  --color-brand-light: #fdfcff;
+  --color-brand-accent: #ffd700;
+  --color-brand-bg: #faf9ff;
+  --color-brand-muted: #6e6b7b;
+
+  --font-sans: var(--font-sans), 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), 'Playfair Display', serif;
+  --font-display: var(--font-display), 'DM Serif Display', serif;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground: #120d1e;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Serif accent class - use sparingly for important statements */
+.font-accent {
+  font-family: var(--font-serif) !important;
+  font-style: italic;
+}
+
+/* Titles font - DM Serif Display */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display) !important;
+  font-weight: 400;
+  /* DM Serif Display usually only has one weight or looks best at 400 */
+}
+
+/* Force Sans for standard body text and interactive elements */
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-sans) !important;
+}
+
+/* Base font-weight helpers to avoid Poppins override on titles */
+.font-bold,
+.font-black,
+.font-semibold {
+  font-family: inherit;
+  /* Allow parent (like h2) to define font-family */
+}
+
+/* If not inside a heading, default these to UI Sans */
+body :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6).font-bold,
+body :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6).font-black,
+body :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6).font-semibold {
+  font-family: var(--font-sans) !important;
+}
+
+.grid-pattern {
+  background-image: radial-gradient(#120d1e10 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+::selection {
+  background: #3a246f;
+  color: #ffffff;
+}
+
+.purple-gradient-text {
+  background: linear-gradient(135deg, #120d1e 0%, #3a246f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
