@@ -33,13 +33,10 @@ export function Footer() {
                     <div className="sm:col-span-2 space-y-6 md:space-y-10">
                         <div className="flex items-center gap-4">
                             <img
-                                src="/branding/icon.svg"
+                                src="/branding/SVG/logo horizantal.svg"
                                 alt="PurpleLine"
                                 className="h-10 md:h-12 w-auto brightness-0 invert"
                             />
-                            <div className="font-black text-2xl md:text-3xl tracking-tighter">
-                                PurpleLine
-                            </div>
                         </div>
                         <div className="text-white/40 text-base md:text-lg max-w-sm leading-relaxed font-medium">
                             Transformez votre carrière et retrouvez votre équilibre avec un accompagnement sur-mesure.
